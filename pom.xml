@@ -35,7 +35,7 @@
         </dependency>
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-api</artifactId>
+            <artifactId>selenium-trash.api</artifactId>
             <version>3.141.5</version>
         </dependency>
         <dependency>

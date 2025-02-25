@@ -2,7 +2,7 @@
 Проект по автотестам для моего ютуб канала. https://www.youtube.com/@threadqa
 В этом репозитаории содержатся UI Selenide + API Rest Assured автотесты
 
-# API автотесты находятся в пакете api
+# API автотесты находятся в пакете trash.api
 Разобраны различные апи автотесты с использованием Pojo классов и Specification для библиотеки RestAssured
 Также рассмотрен вариант апи автотестов без Pojo классов через Response и JsonPath
 
@@ -10,15 +10,15 @@
 Разобраны методы для фильтраций значений и перебора через forEach
 Также разобран вариант сортировки через sorted() от большему к меньшему и наоборот
 
-# UI Selenium автотесты находятся в пакете helpDesk
+# UI Selenium автотесты находятся в пакете trash.helpDesk
 Написан тестовый фреймворк с использованием PageObject и аннотацией @FindBy
 Разобран пример заполнения тикета в техподдержку
 
 # UI Selenide автотесты находятся в пакете AppleInsider и Hh
 Разобран пример как работать с элементами в Selenide по паттерну PageObject
 
-# UI Selenide ElementsCollection в пакете wiki
-Разбор коллекций и их итерации находится в пакете wiki
+# UI Selenide ElementsCollection в пакете trash.wiki
+Разбор коллекций и их итерации находится в пакете trash.wiki
 
-# Чтение настроек из файльа .property и .conf в пакете readProperties
+# Чтение настроек из файльа .property и .conf в пакете trash.readProperties
 Разобраны варианты чтения настроек из различных файлов
