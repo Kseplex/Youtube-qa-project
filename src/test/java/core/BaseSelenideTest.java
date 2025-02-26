@@ -1,40 +1,19 @@
 package core;
 
-import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.Selenide;
-import io.github.bonigarcia.wdm.WebDriverManager;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
+import core.config.WebDriverConfig;
+import core.config.WebDriverProviderSelenide;
+import org.aeonbits.owner.ConfigFactory;
+import org.junit.jupiter.api.BeforeAll;
 
 /**
  * Базовый класс для инициализации селенида
  */
-abstract public class BaseSelenideTest {
+public class BaseSelenideTest {
 
-    /**
-     * Инициализация selenide с настройками
-     */
-    public void setUp(){
-        WebDriverManager.chromedriver().setup();
-        Configuration.browser = "chrome";
-        Configuration.driverManagerEnabled = true;
-        Configuration.browserSize = "1920x1080";
-        Configuration.headless = false;
-    }
+    public static WebDriverConfig config = ConfigFactory.create(WebDriverConfig.class, System.getProperties());
 
-    /**
-     * Выполнение метода перед каждым запуском тестов
-     */
-    @BeforeEach
-    public void init(){
-        setUp();
-    }
-
-    /**
-     * Выполнение метода после каждого закрытия тестов
-     */
-    @AfterEach
-    public void tearDown(){
-        Selenide.closeWebDriver();
+    @BeforeAll
+    static void setUp() {
+        new WebDriverProviderSelenide().get();
     }
 }

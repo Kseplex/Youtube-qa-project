@@ -67,8 +67,8 @@ public class WikiTest extends BaseSelenideTest {
             Selenide.open(links.get(index));
             links.remove(WebDriverRunner.getWebDriver().getCurrentUrl());
         }
-
         //пример работы стримапи
-        List<Integer> hrefSizeEach = hrefs.stream().map(x->x.getAttribute("href").length()).collect(Collectors.toList());
+        /*List<Integer> hrefSizeEach = hrefs
+                hrefs.stream().map(x->x.getAttribute("href").length()).collect(Collectors.toList());*/
     }
 }
