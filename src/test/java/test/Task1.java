@@ -10,6 +10,8 @@ public class Task1 extends BaseSelenideTest {
     private final Task1Steps stepOne = new Task1Steps();
     private final Task1Steps stepTwo = new Task1Steps();
 
+    //TODO: оставь 1 экземпляр класса Task1Steps
+
     @Test
     @DisplayName("Выпадающий список")
     public void singleSelectTest() {

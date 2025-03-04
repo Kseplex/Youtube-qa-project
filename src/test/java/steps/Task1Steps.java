@@ -13,6 +13,9 @@ import static com.codeborne.selenide.Selenide.$$x;
 public class Task1Steps extends BaseSteps {
 
     private final String SEARCH_HEADER = "Select Menu";
+
+    //TODO: сделай через List<String> expectedSelectOptions = List.of(''')
+    //TODO: не называй переменную temp, это неинформативно
     private final String[] temp = new String[] {"Group 1, option 1", "Group 1, option 2", "Group 2, option 1",
             "Group 2, option 2", "A root option", "Another root option"};
 
@@ -27,6 +30,8 @@ public class Task1Steps extends BaseSteps {
 
     public void checkDropdownMenu () {
         selectMenuPage.selectValue.click();
+        //TODO: не пиши xpath в методах, выноси на пейджи
+        //TODO: xpath выглядит как ненадежный, попытайся привязаться к более уникальным атрибутам
         ElementsCollection collection = $$x("//div[@tabindex='-1']");
         List<String> list = new ArrayList<>();
         for (int i = 0; i < collection.size(); i++) {
