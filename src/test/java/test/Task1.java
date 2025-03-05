@@ -4,7 +4,6 @@ import core.BaseSelenideTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import steps.Task1Steps;
-
 public class Task1 extends BaseSelenideTest {
 
     private final Task1Steps stepOne = new Task1Steps();

@@ -6,13 +6,17 @@ import pages.SelectMenuPage;
 
 import java.util.List;
 
-import static org.hamcrest.MatcherAssert.assertThat;
+
+import static com.codeborne.selenide.Selenide.$$x;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+
 
 public class Task1Steps extends BaseSteps {
+
     private final String SEARCH_HEADER = "Select Menu";
     private final List<String> expectedSelectOptions = List.of("Group 1, option 1", "Group 1, option 2",
             "Group 2, option 1", "Group 2, option 2", "A root option", "Another root option");
-    private final ElementsCollection collection = new SelectMenuPage().valueCollection;
+    private final SelectMenuPage selectMenuPage = new SelectMenuPage();
 
     public void checkHeader() {
         navigationMenu.createXpath("Widgets").click();
@@ -25,8 +29,6 @@ public class Task1Steps extends BaseSteps {
 
     public void checkDropdownMenu () {
         selectMenuPage.selectValue.click();
-        //TODO: не пиши xpath в методах, выноси на пейджи
-        //TODO: xpath выглядит как ненадежный, попытайся привязаться к более уникальным атрибутам
-
+        assertThat(selectMenuPage.valueCollection.texts()).isEqualTo(expectedSelectOptions);
     }
 }
