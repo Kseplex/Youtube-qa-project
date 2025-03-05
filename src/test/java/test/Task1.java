@@ -16,7 +16,7 @@ public class Task1 extends BaseSelenideTest {
     @DisplayName("Выпадающий список")
     public void singleSelectTest() {
         //TODO:не хватает перехода с основной страницы на widgets, добавь в baseSteps
-        stepOne.findHeader();
+        stepOne.checkHeader();
         stepTwo.checkDropdownMenu();
     }
 
