@@ -16,6 +16,7 @@ public class Task1 extends BaseSelenideTest {
         //TODO:не хватает перехода с основной страницы на widgets, добавь в baseSteps
         task1Steps.checkHeader();
         task1Steps.checkDropdownMenu();
+        task1Steps.checkValue();
     }
 
 }

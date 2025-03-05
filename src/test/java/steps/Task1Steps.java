@@ -11,11 +11,10 @@ public class Task1Steps extends BaseSteps {
     private final String SEARCH_HEADER = "Select Menu";
     private final List<String> expectedSelectOptions = List.of("Group 1, option 1", "Group 1, option 2",
             "Group 2, option 1", "Group 2, option 2", "A root option", "Another root option");
-    private final ElementsCollection collection = selectMenuPage.valueCollection;
 
     public void checkHeader() {
-        navigationMenu.createXpath("Widgets").click();
-        navigationMenu.createXpath("Select Menu").click();
+        goToTab("Widgets");
+        goToMenuElement("Select Menu");
 
         Assertions.assertEquals(
                 selectMenuPage.headerSelectMenu.getText(),
@@ -24,6 +23,12 @@ public class Task1Steps extends BaseSteps {
 
     public void checkDropdownMenu () {
         selectMenuPage.selectValue.click();
-        assertThat(collection.texts()).isEqualTo(expectedSelectOptions);
+        assertThat(selectMenuPage.valueCollection.texts())
+                .isEqualTo(expectedSelectOptions);
+    }
+
+    public void checkValue () {
+        selectMenuPage.valueCollection.get(3).click();
+        sel
     }
 }

@@ -12,6 +12,7 @@ public class SelectMenuPage {
     public final SelenideElement headerSelectMenu = $x(
             "//div[@class='main-header'][text()='Select Menu']");
     public final SelenideElement selectValue = $x(
-            "//div[text()='Select Option']");
-    public final ElementsCollection valueCollection = $$x("//div[@tabindex='-1']");
+            "//div[@class='select-menu-container']//div[text()='Select Option']");
+    public final ElementsCollection valueCollection = $$x(
+            "//div[@tabindex='-1']");
 }
