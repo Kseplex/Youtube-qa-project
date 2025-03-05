@@ -11,9 +11,15 @@ public class SelectMenuPage {
     public final SelenideElement headerSelectMenu = $x(
             "//div[@class='main-header'][text()='Select Menu']");
     public final SelenideElement selectValue = $x(
-            "//div[@class='select-menu-container']//div[text()='Select Option']");
+            "//div[@class='select-menu-container']//div[@id='withOptGroup']");
+
+    public SelenideElement getSingleSelectOption(String value){
+        return $x(String.format("//div[@class='select-menu-container']//div[@id='withOptGroup']" +
+                "//div[contains(@class,'menu')]//div[contains(@id,'react-select') and contains(@class,'option')][text()='%s']", value));
+    }
+
     public final ElementsCollection valueCollection = $$x(
-            "//div[@tabindex='-1']");
-    public final SelenideElement selectedValue = $x(
-            "//div[@class=' css-1uccc91-singleValue'][text()='Group 2, option 2']");
+            "//div[@class='select-menu-container']//div[@id='withOptGroup']//div[@tabindex]");
+
+    public final SelenideElement selectedValue = $x("//div[@class='select-menu-container']//div[@id='withOptGroup']//div[contains(@class,'singleValue')]");
 }

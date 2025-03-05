@@ -14,7 +14,7 @@ public class Task1 extends BaseSelenideTest {
     public void singleSelectTest() {
         task1Steps.checkHeader();
         task1Steps.checkDropdownMenu();
-        task1Steps.checkSelectedValue();
+        task1Steps.checkSelectedValue("Group 2, option 2");
     }
 
 }
