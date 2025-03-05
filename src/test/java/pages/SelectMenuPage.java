@@ -8,11 +8,12 @@ import static com.codeborne.selenide.Selenide.$x;
 
 public class SelectMenuPage {
 
-    //TODO:здесь описывай элементы для тестов выпадающих списков
     public final SelenideElement headerSelectMenu = $x(
             "//div[@class='main-header'][text()='Select Menu']");
     public final SelenideElement selectValue = $x(
             "//div[@class='select-menu-container']//div[text()='Select Option']");
     public final ElementsCollection valueCollection = $$x(
             "//div[@tabindex='-1']");
+    public final SelenideElement selectedValue = $x(
+            "//div[@class=' css-1uccc91-singleValue'][text()='Group 2, option 2']");
 }

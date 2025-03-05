@@ -1,6 +1,5 @@
 package steps;
 
-import com.codeborne.selenide.ElementsCollection;
 import org.junit.jupiter.api.Assertions;
 import java.util.List;
 
@@ -8,9 +7,10 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class Task1Steps extends BaseSteps {
 
-    private final String SEARCH_HEADER = "Select Menu";
+    private final String HEADER = "Select Menu";
     private final List<String> expectedSelectOptions = List.of("Group 1, option 1", "Group 1, option 2",
             "Group 2, option 1", "Group 2, option 2", "A root option", "Another root option");
+    private final String EXPECTED_VALUE = "Group 2, option 2";
 
     public void checkHeader() {
         goToTab("Widgets");
@@ -18,7 +18,7 @@ public class Task1Steps extends BaseSteps {
 
         Assertions.assertEquals(
                 selectMenuPage.headerSelectMenu.getText(),
-                SEARCH_HEADER);
+                HEADER);
     }
 
     public void checkDropdownMenu () {
@@ -27,8 +27,11 @@ public class Task1Steps extends BaseSteps {
                 .isEqualTo(expectedSelectOptions);
     }
 
-    public void checkValue () {
+    public void checkSelectedValue() {
         selectMenuPage.valueCollection.get(3).click();
-        sel
+
+        Assertions.assertEquals(EXPECTED_VALUE,
+                selectMenuPage.selectedValue.getText());
+
     }
 }
