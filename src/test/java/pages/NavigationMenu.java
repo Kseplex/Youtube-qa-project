@@ -12,9 +12,6 @@ public class NavigationMenu {
     public SelenideElement getTabByText(String text) {
         return $x("//div[@class='card-body']//h5[text()='" + text + "']");
     }
-    public SelenideElement getMenuElementByText(String text) {
-        return $x("//span[@class='text'][text()='" + text + "']");
-    }
 
     public void selectSubchapterInChapter(Chapter chapter, SubChapter subChapter){
         if(!$x(String.format("//div[@class='element-group' and .//div[text()='%s']]//ul[@class='menu-list']", chapter.getValue())).is(Condition.visible)){
@@ -22,6 +19,5 @@ public class NavigationMenu {
         }
         $x(String.format("//div[@class='element-group' and .//div[text()='%s']]//span[@class='text'][text()='%s']", chapter.getValue(), subChapter.getValue())).click();
     }
-
 
 }

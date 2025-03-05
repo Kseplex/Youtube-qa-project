@@ -1,5 +1,7 @@
 package steps;
 
+import common.enums.Chapter;
+import common.enums.SubChapter;
 import pages.NavigationMenu;
 import pages.SelectMenuPage;
 
@@ -12,7 +14,7 @@ public class BaseSteps {
         navigationMenu.getTabByText(tabName).click();
     }
 
-    public void goToMenuElement(String elementName) {
-        navigationMenu.getMenuElementByText(elementName).click();
+    public void goToMenuElement(Chapter chapter, SubChapter subChapter) {
+        navigationMenu.selectSubchapterInChapter(chapter, subChapter);
     }
 }
