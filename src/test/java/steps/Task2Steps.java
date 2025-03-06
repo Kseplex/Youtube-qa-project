@@ -1,6 +1,7 @@
 package steps;
 
 import common.enums.Chapter;
+import common.enums.DropdownOptions;
 import common.enums.SubChapter;
 import io.qameta.allure.Step;
 
@@ -31,7 +32,9 @@ public class Task2Steps extends BaseSteps{
 
     @Step("Выбрать в выпадающем списке '{0}', '{1}', проверить, что после нажатия в селекторе будут установлены\n" +
             "эти значения")
-    public void checkValues(String first, String second) {
+    public void checkValues(DropdownOptions first, DropdownOptions second) {
+        selectMenuPage.selectValues(first.getValue()).click();
+        selectMenuPage.selectValues(second.getValue()).click();
 
     }
 }

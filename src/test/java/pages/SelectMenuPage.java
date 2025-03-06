@@ -26,5 +26,12 @@ public class SelectMenuPage {
         return $x(String.format("//div[@class='select-menu-container']//div[@id='withOptGroup']" +
                 "//div[contains(@class,'menu')]//div[contains(@id,'react-select') and contains(@class,'option')][text()='%s']", value));
     }
-
+    public final SelenideElement selectValues(String value) {
+        return $x(String.format("//div[@class='select-menu-container']//div[@class='row']//div[contains(@class,'container')]" +
+                "//div[contains(@id,'react-select') and contains(@class,'option')][text()='%s']", value));
+    }
+    public final SelenideElement getMultiSelectedValues(String firstValue, String secondValue) {
+        return $x(String.format("//div[@class='select-menu-container']//div[@class='row']//div[contains(@class,'container')]" +
+                "//div[contains(@class,'multiValue')]/div[contains(text(),'%s') and contains(text(), '%s')]", firstValue, secondValue));
+    }
 }

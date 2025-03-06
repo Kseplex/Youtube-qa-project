@@ -1,6 +1,7 @@
 package test;
 
 import common.enums.Chapter;
+import common.enums.DropdownOptions;
 import common.enums.WidgetsSubChapter;
 import core.BaseSelenideTest;
 import org.junit.jupiter.api.DisplayName;
@@ -13,15 +14,12 @@ public class Task2 extends BaseSelenideTest {
 
     private final Task2Steps task2Steps = new Task2Steps();
     private final List<String> expectedSelectOptions = List.of("Green", "Blue", "Black", "Red");
-    private final String valueOne = "Blue";
-    private final String valueTwo = "Green";
 
     @Test
     @DisplayName("Выпадающий список с множеством значений")
     public void multipleSelectTest() {
         task2Steps.checkHeader(Chapter.WIDGETS, WidgetsSubChapter.SELECT_MENU);
         task2Steps.checkDropdownMenu(expectedSelectOptions);
-        task2Steps.checkValues(valueOne, valueTwo);
-
+        task2Steps.checkValues(DropdownOptions.BLUE, DropdownOptions.GREEN);
     }
 }
