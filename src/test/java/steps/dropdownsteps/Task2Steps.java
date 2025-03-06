@@ -1,7 +1,8 @@
-package steps;
+package steps.dropdownsteps;
 
 import com.codeborne.selenide.CollectionCondition;
 import io.qameta.allure.Step;
+import steps.BaseSteps;
 
 import java.time.Duration;
 import java.util.List;
@@ -19,7 +20,7 @@ public class Task2Steps extends BaseSteps {
                 .isEqualTo(list);
     }
 
-    @Step("Выбрать в выпадающем списке '{0}', '{1}', проверить, что после нажатия в селекторе будут установлены\n" +
+    @Step("Выбрать в выпадающем списке '{0}', проверить, что после нажатия в селекторе будут установлены\n" +
             "эти значения")
     public void checkSelectedValues(List<String> options) {
         options.forEach(option->selectMenuPage.getMultiSelectOption(option).click());

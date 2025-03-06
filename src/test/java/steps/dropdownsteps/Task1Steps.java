@@ -1,8 +1,9 @@
-package steps;
+package steps.dropdownsteps;
 
 import common.enums.Chapter;
 import common.enums.SubChapter;
 import io.qameta.allure.Step;
+import steps.BaseSteps;
 
 import java.util.List;
 

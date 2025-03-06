@@ -1,15 +1,15 @@
-package test;
+package test.dropdowntest;
 
 import common.enums.Chapter;
 import common.enums.WidgetsSubChapter;
 import core.BaseSelenideTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import steps.Task1Steps;
+import steps.dropdownsteps.Task1Steps;
 
 import java.util.List;
 
-public class Task1 extends BaseSelenideTest {
+public class Task1Test extends BaseSelenideTest {
 
     private final Task1Steps task1Steps = new Task1Steps();
 

@@ -1,15 +1,15 @@
-package test;
+package test.dropdowntest;
 
 import common.enums.Chapter;
 import common.enums.WidgetsSubChapter;
 import core.BaseSelenideTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import steps.Task2Steps;
+import steps.dropdownsteps.Task2Steps;
 
 import java.util.List;
 
-public class Task2 extends BaseSelenideTest {
+public class Task2Test extends BaseSelenideTest {
 
     private final Task2Steps task2Steps = new Task2Steps();
     private final List<String> expectedSelectOptions = List.of("Green", "Blue", "Black", "Red");
