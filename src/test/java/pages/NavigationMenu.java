@@ -19,5 +19,4 @@ public class NavigationMenu {
         }
         $x(String.format("//div[@class='element-group' and .//div[text()='%s']]//span[@class='text'][text()='%s']", chapter.getValue(), subChapter.getValue())).click();
     }
-
 }

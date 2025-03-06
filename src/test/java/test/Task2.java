@@ -20,6 +20,6 @@ public class Task2 extends BaseSelenideTest {
     public void multipleSelectTest() {
         task2Steps.checkHeader(Chapter.WIDGETS, WidgetsSubChapter.SELECT_MENU);
         task2Steps.checkDropdownMenu(expectedSelectOptions);
-        task2Steps.checkValues(DropdownOptions.BLUE, DropdownOptions.GREEN);
+        task2Steps.checkSelectedValues(DropdownOptions.BLUE, DropdownOptions.GREEN);
     }
 }
