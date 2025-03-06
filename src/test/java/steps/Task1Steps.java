@@ -23,8 +23,8 @@ public class Task1Steps extends BaseSteps {
 
     @Step("Нажать на селектор 'select value', проверить, что отобразился выпадающий список со значениями '{list}'")
     public void checkDropdownMenu (List<String> list) {
-        selectMenuPage.selectValue.click();
-        assertThat(selectMenuPage.valueCollection.texts())
+        selectMenuPage.singleSelectContainer.click();
+        assertThat(selectMenuPage.singleValueCollection.texts())
                 .isEqualTo(list);
     }
 
@@ -34,6 +34,6 @@ public class Task1Steps extends BaseSteps {
         selectMenuPage.getSingleSelectOption(value).click();
 
         assertEquals(value,
-                selectMenuPage.selectedValue.getText());
+                selectMenuPage.selectedSingleValue.getText());
     }
 }

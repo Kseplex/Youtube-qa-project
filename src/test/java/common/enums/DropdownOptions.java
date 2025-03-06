@@ -7,10 +7,12 @@ import lombok.Getter;
 @AllArgsConstructor
 public enum DropdownOptions {
 
+    EMPTY("Select..."),
     RED("Red"),
     BLUE("Blue"),
     GREEN("Green"),
     BLACK("Black");
+
 
     private final String value;
 }

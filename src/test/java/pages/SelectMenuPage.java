@@ -10,14 +10,22 @@ public class SelectMenuPage {
 
     public final SelenideElement headerSelectMenu = $x(
             "//div[@class='main-header'][text()='Select Menu']");
-    public final SelenideElement selectValue = $x(
+    public final SelenideElement singleSelectContainer = $x(
             "//div[@class='select-menu-container']//div[@id='withOptGroup']");
-    public final SelenideElement selectedValue = $x(
+    public final SelenideElement selectedSingleValue = $x(
             "//div[@class='select-menu-container']//div[@id='withOptGroup']//div[contains(@class,'singleValue')]");
-    public final SelenideElement multiSelectValue = $x(
+    public final SelenideElement multiSelectContainer = $x(
             "//div[@class='select-menu-container']//div[@class='row']//div[contains(@class,'container')]");
+    public final SelenideElement crossMultiSelect = $x(
+            "//div[@class='select-menu-container']//div[@class='row']//div[contains(@class,'container')]" +
+                    "//div[contains(@class,'indicatorContainer')][1]");
+    public final SelenideElement emptyMultiSelect = $x(
+            "//div[@class='select-menu-container']//div[@class='row']//div[contains(@class,'container')]" +
+                    "//div[contains(@class,'placeholder')][1]");
+    public final SelenideElement noOptionsSelect = $x("//div[@class='select-menu-container']//div[@class='row']" +
+            "//div[contains(@class,'container')]//div[contains(@class,'menu')]//div[text()='No options']");
 
-    public final ElementsCollection valueCollection = $$x(
+    public final ElementsCollection singleValueCollection = $$x(
             "//div[@class='select-menu-container']//div[@id='withOptGroup']//div[@tabindex]");
     public final ElementsCollection multiValueCollection = $$x(
             "//div[@class='select-menu-container']//div[@class='row']//div[contains(@class,'container')]//div[@tabindex]");
@@ -26,11 +34,11 @@ public class SelectMenuPage {
         return $x(String.format("//div[@class='select-menu-container']//div[@id='withOptGroup']" +
                 "//div[contains(@class,'menu')]//div[contains(@id,'react-select') and contains(@class,'option')][text()='%s']", value));
     }
-    public final SelenideElement selectValues(String value) {
+    public final SelenideElement selectMultiValue(String value) {
         return $x(String.format("//div[@class='select-menu-container']//div[@class='row']//div[contains(@class,'container')]" +
                 "//div[contains(@id,'react-select') and contains(@class,'option')][text()='%s']", value));
     }
-    public final SelenideElement getMultiSelectedValue(String value) {
+    public final SelenideElement getMultiSelectOption(String value) {
         return $x(String.format("//div[@class='select-menu-container']//div[@class='row']//div[contains(@class,'container')]" +
                 "//div[contains(@class,'multiValue')]//div[text()='%s']", value));
     }

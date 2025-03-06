@@ -21,5 +21,7 @@ public class Task2 extends BaseSelenideTest {
         task2Steps.checkHeader(Chapter.WIDGETS, WidgetsSubChapter.SELECT_MENU);
         task2Steps.checkDropdownMenu(expectedSelectOptions);
         task2Steps.checkSelectedValues(DropdownOptions.BLUE, DropdownOptions.GREEN);
+        task2Steps.checkCleaning();
+        task2Steps.checkSelectAll();
     }
 }
