@@ -16,12 +16,9 @@ public class SelectMenuPage {
             "//div[@class='select-menu-container']//div[@id='withOptGroup']//div[contains(@class,'singleValue')]");
     public final SelenideElement multiSelectContainer = $x(
             "//div[@class='select-menu-container']//div[@class='row']//div[contains(@class,'container')]");
-    public final SelenideElement crossMultiSelect = $x(
+    public final SelenideElement multiSelectCross = $x(
             "//div[@class='select-menu-container']//div[@class='row']//div[contains(@class,'container')]" +
                     "//div[contains(@class,'indicatorContainer')][1]");
-    public final SelenideElement emptyMultiSelect = $x(
-            "//div[@class='select-menu-container']//div[@class='row']//div[contains(@class,'container')]" +
-                    "//div[contains(@class,'placeholder')][1]");
     public final SelenideElement noOptionsSelect = $x("//div[@class='select-menu-container']//div[@class='row']" +
             "//div[contains(@class,'container')]//div[contains(@class,'menu')]//div[text()='No options']");
 
@@ -30,16 +27,17 @@ public class SelectMenuPage {
     public final ElementsCollection multiValueCollection = $$x(
             "//div[@class='select-menu-container']//div[@class='row']//div[contains(@class,'container')]//div[@tabindex]");
 
-    public final SelenideElement getSingleSelectOption(String value){
+    public final SelenideElement getSingleSelectOption(String value) {
         return $x(String.format("//div[@class='select-menu-container']//div[@id='withOptGroup']" +
                 "//div[contains(@class,'menu')]//div[contains(@id,'react-select') and contains(@class,'option')][text()='%s']", value));
     }
-    public final SelenideElement selectMultiValue(String value) {
+
+    public final SelenideElement getMultiSelectOption(String value) {
         return $x(String.format("//div[@class='select-menu-container']//div[@class='row']//div[contains(@class,'container')]" +
                 "//div[contains(@id,'react-select') and contains(@class,'option')][text()='%s']", value));
     }
-    public final SelenideElement getMultiSelectOption(String value) {
-        return $x(String.format("//div[@class='select-menu-container']//div[@class='row']//div[contains(@class,'container')]" +
-                "//div[contains(@class,'multiValue')]//div[text()='%s']", value));
+
+    public final ElementsCollection getMultiSelectedOptions() {
+        return $$x("//div[@class='select-menu-container']//div[@class='row']//div[contains(@class,'container')]//div[contains(@class,'multiValue')]");
     }
 }

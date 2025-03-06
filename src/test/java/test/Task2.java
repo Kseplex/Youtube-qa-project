@@ -1,7 +1,6 @@
 package test;
 
 import common.enums.Chapter;
-import common.enums.DropdownOptions;
 import common.enums.WidgetsSubChapter;
 import core.BaseSelenideTest;
 import org.junit.jupiter.api.DisplayName;
@@ -20,8 +19,9 @@ public class Task2 extends BaseSelenideTest {
     public void multipleSelectTest() {
         task2Steps.checkHeader(Chapter.WIDGETS, WidgetsSubChapter.SELECT_MENU);
         task2Steps.checkDropdownMenu(expectedSelectOptions);
-        task2Steps.checkSelectedValues(DropdownOptions.BLUE, DropdownOptions.GREEN);
+        task2Steps.checkSelectedValues(List.of("Blue", "Green"));
         task2Steps.checkCleaning();
         task2Steps.checkSelectAll();
     }
+
 }

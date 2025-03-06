@@ -37,6 +37,7 @@ public class PropertiesLoader {
             }
         });
     }
+
     private Map<String, String> getAllProps() {
         Map<String, String> map = new HashMap<>();
         properties.forEach((key, value) -> map.put(key.toString(), value.toString()));
