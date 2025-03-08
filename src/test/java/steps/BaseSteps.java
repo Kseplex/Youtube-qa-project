@@ -34,8 +34,7 @@ public class BaseSteps {
         goToTab(chapter.getValue());
         goToMenuElement(chapter, subChapter);
 
-        assertEquals(
-                selectMenuPage.headerSelectMenu.getText(),
+        assertEquals($x("//div[@class='main-header']").getText(),
                 subChapter.getValue());
     }
 
