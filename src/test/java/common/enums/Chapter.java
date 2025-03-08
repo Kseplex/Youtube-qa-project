@@ -7,6 +7,7 @@ import lombok.Getter;
 @AllArgsConstructor
 public enum Chapter {
 
+    ELEMENTS("Elements"),
     WIDGETS("Widgets");
 
     private final String value;

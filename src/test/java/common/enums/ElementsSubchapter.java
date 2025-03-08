@@ -7,8 +7,7 @@ import lombok.Getter;
 @AllArgsConstructor
 public enum ElementsSubchapter implements SubChapter{
 
-    TEXT_BOX("Text Box"),
-    CHECK_BOX("Check Box");
+    WEB_TABLES("Web Tables");
 
     private final String value;
 }
