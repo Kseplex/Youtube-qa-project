@@ -2,29 +2,38 @@ package steps.dropdownsteps;
 
 import com.codeborne.selenide.CollectionCondition;
 import io.qameta.allure.Step;
+import org.assertj.core.api.Assertions;
 import steps.BaseSteps;
 
 import java.time.Duration;
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class Task2Steps extends BaseSteps {
-
-    @Step("Нажать на селектор 'Multiselect drop down', проверить, что отобразился выпадающий список со значениями\n" +
-            "'{list}'")
-    public void checkDropdownMenu(List<String> list) {
-        selectMenuPage.multiSelectContainer.click();
-        assertThat(selectMenuPage.multiValueCollection.texts())
+public class DropdownSteps extends BaseSteps {
+    @Step("Нажать на селектор 'select value', проверить, что отобразился выпадающий список со значениями '{list}'")
+    public void checkDropdownMenu (List<String> list) {
+        selectMenuPage.singleSelectContainer.click();
+        assertThat(selectMenuPage.singleValueCollection.texts())
                 .isEqualTo(list);
+    }
+
+    @Step("Выбрать в выпадающем списке '{value}', проверить, что после нажатия в селекторе будет установлено \n" +
+            "это значение")
+    public void checkSelectedValue(String value) {
+        selectMenuPage.getSingleSelectOption(value).click();
+
+        assertEquals(value,
+                selectMenuPage.selectedSingleValue.getText());
     }
 
     @Step("Выбрать в выпадающем списке '{0}', проверить, что после нажатия в селекторе будут установлены\n" +
             "эти значения")
     public void checkSelectedValues(List<String> options) {
         options.forEach(option->selectMenuPage.getMultiSelectOption(option).click());
-        assertThat(selectMenuPage.getMultiSelectedOptions().texts()).isEqualTo(options);
+        Assertions.assertThat(selectMenuPage.getMultiSelectedOptions().texts()).isEqualTo(options);
     }
 
     @Step("Нажать на крестик в селекторе, проверить, что поле очистится")
@@ -40,5 +49,4 @@ public class Task2Steps extends BaseSteps {
         selectMenuPage.multiValueCollection.texts().forEach(option->selectMenuPage.getMultiSelectOption(option).click());
         assertTrue(selectMenuPage.noOptionsSelect.isDisplayed());
     }
-
 }

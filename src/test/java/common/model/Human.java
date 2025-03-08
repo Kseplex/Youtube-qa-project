@@ -1,7 +1,9 @@
-package test.tabletest;
+package common.model;
 
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.experimental.Accessors;
 
 @Data
@@ -10,10 +12,10 @@ import lombok.experimental.Accessors;
 public class Human {
 
     private String firstName;
-    private String secondName;
+    private String lastName;
+    private int age;
     private String email;
-    private String age;
-    private String salary;
+    private int salary;
     private String department;
 
 }

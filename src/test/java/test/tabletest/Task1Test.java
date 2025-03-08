@@ -2,23 +2,29 @@ package test.tabletest;
 
 import common.enums.Chapter;
 import common.enums.ElementsSubchapter;
+import common.model.Human;
 import core.BaseSelenideTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import steps.tablesteps.Task1Steps;
-
-import java.util.List;
+import steps.tablesteps.TableSteps;
 
 public class Task1Test extends BaseSelenideTest {
 
-    Task1Steps task1Steps = new Task1Steps();
-    public List<String> dataToFill = List.of("Alexander", "Zhidyaev", "alex@example.com", "25", "300000", "Nanosecs");
+    private final TableSteps steps = new TableSteps();
 
     @Test
     @DisplayName("Добавление ряда")
     public void addRowTest() {
-        task1Steps.checkTable(Chapter.ELEMENTS, ElementsSubchapter.WEB_TABLES);
-        task1Steps.checkRegistrationForm();
-        task1Steps.checkNameIsDisplayed(dataToFill);
+        Human humanToAdd = new Human()
+                .age(25)
+                .salary(300000)
+                .department("Nanosex")
+                .email("alex@example.com")
+                .firstName("Alexander")
+                .lastName("Zhidyaev");
+
+        steps.checkTable(Chapter.ELEMENTS, ElementsSubchapter.WEB_TABLES);
+        steps.checkRegistrationForm();
+        steps.checkAddRow(humanToAdd);
     }
 }

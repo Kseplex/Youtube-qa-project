@@ -5,18 +5,20 @@ import common.enums.WidgetsSubChapter;
 import core.BaseSelenideTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import steps.dropdownsteps.Task2Steps;
+import steps.dropdownsteps.DropdownSteps;
+
 
 import java.util.List;
 
 public class Task2Test extends BaseSelenideTest {
 
-    private final Task2Steps task2Steps = new Task2Steps();
-    private final List<String> expectedSelectOptions = List.of("Green", "Blue", "Black", "Red");
+    private final DropdownSteps task2Steps = new DropdownSteps();
 
     @Test
     @DisplayName("Выпадающий список с множеством значений")
     public void multipleSelectTest() {
+        final List<String> expectedSelectOptions = List.of("Green", "Blue", "Black", "Red");
+
         task2Steps.checkHeader(Chapter.WIDGETS, WidgetsSubChapter.SELECT_MENU);
         task2Steps.checkDropdownMenu(expectedSelectOptions);
         task2Steps.checkSelectedValues(List.of("Blue", "Green"));

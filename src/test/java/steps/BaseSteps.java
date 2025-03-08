@@ -1,5 +1,6 @@
 package steps;
 
+import com.codeborne.selenide.SelenideElement;
 import common.enums.Chapter;
 import common.enums.SubChapter;
 import io.qameta.allure.Step;
@@ -7,11 +8,12 @@ import pages.NavigationMenu;
 import pages.SelectMenuPage;
 import pages.WebTablesPage;
 
-import java.util.Iterator;
-import java.util.List;
+import java.time.Duration;
 
+import static com.codeborne.selenide.Condition.exist;
+import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Selenide.$x;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class BaseSteps {
 
@@ -27,24 +29,6 @@ public class BaseSteps {
         navigationMenu.selectSubchapterInChapter(chapter, subChapter);
     }
 
-    public void fillRegistrationForm(List<String> data) {
-        Iterator<String> iterator = data.iterator();
-        webTablesPage.registrationFormFields.forEach(field -> {
-            field.click();
-            field.clear();
-            field.sendKeys(iterator.next());
-        });
-        webTablesPage.buttonSubmit.click();
-    }
-
-    @Step("Перейти в раздел '{0}', подраздел '{1}', проверить, что отобразилась таблица")
-    public void checkTable(Chapter chapter, SubChapter subChapter) {
-        goToTab(chapter.getValue());
-        goToMenuElement(chapter, subChapter);
-
-        assertTrue(webTablesPage.table.isDisplayed());
-    }
-
     @Step("Перейти в раздел '{0}', подраздел '{1}', проверить, что отобразился заголовок вверху страницы")
     public void checkHeader(Chapter chapter, SubChapter subChapter) {
         goToTab(chapter.getValue());
@@ -54,4 +38,19 @@ public class BaseSteps {
                 selectMenuPage.headerSelectMenu.getText(),
                 subChapter.getValue());
     }
+
+    @Step("Нажать на кнопку с текстом '{0}'")
+    public void clickButtonByText(String text) {
+        $x(String.format("//button[text()='%s']", text)).should(visible, Duration.ofSeconds(4000)).click();
+    }
+
+    @Step("В поле вводе с placeholder='{0}' ввести значение '{1}'")
+    public void inputValueByPlaceholder(String placeholder, String value) {
+        $x(String.format("//input[@placeholder='%s']", placeholder)).should(visible, Duration.ofSeconds(4000)).sendKeys(value);
+    }
+
+    public SelenideElement getElementByPlaceholder(String placeholder) {
+        return $x(String.format("//input[@placeholder]='%s'", placeholder)).should(exist, Duration.ofSeconds(4000));
+    }
+
 }
