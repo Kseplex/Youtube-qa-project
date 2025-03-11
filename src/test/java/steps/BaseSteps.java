@@ -1,6 +1,5 @@
 package steps;
 
-import com.codeborne.selenide.SelenideElement;
 import common.enums.Chapter;
 import common.enums.SubChapter;
 import io.qameta.allure.Step;
@@ -10,7 +9,6 @@ import pages.WebTablesPage;
 
 import java.time.Duration;
 
-import static com.codeborne.selenide.Condition.exist;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$x;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -45,11 +43,8 @@ public class BaseSteps {
 
     @Step("В поле вводе с placeholder='{0}' ввести значение '{1}'")
     public void inputValueByPlaceholder(String placeholder, String value) {
+        $x(String.format("//input[@placeholder='%s']", placeholder)).should(visible, Duration.ofSeconds(4000)).clear();
         $x(String.format("//input[@placeholder='%s']", placeholder)).should(visible, Duration.ofSeconds(4000)).sendKeys(value);
-    }
-
-    public SelenideElement getElementByPlaceholder(String placeholder) {
-        return $x(String.format("//input[@placeholder]='%s'", placeholder)).should(exist, Duration.ofSeconds(4000));
     }
 
 }

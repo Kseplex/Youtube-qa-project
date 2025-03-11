@@ -16,9 +16,9 @@ public class Task1Test extends BaseSelenideTest {
     @DisplayName("Добавление ряда")
     public void addRowTest() {
         Human humanToAdd = new Human()
-                .age(25)
+                .age(24)
                 .salary(300000)
-                .department("Nanosex")
+                .department("Nanosecs")
                 .email("alex@example.com")
                 .firstName("Alexander")
                 .lastName("Zhidyaev");
