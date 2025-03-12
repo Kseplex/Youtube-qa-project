@@ -24,14 +24,14 @@ public class Task2Test extends BaseSelenideTest {
     @BeforeEach
     public void initEach(){
         steps.checkTable(Chapter.ELEMENTS, ElementsSubchapter.WEB_TABLES);
-        steps.checkRegistrationForm();
-        steps.checkAddRow(humanToTest);
+        steps.clickButtonByText("Add");
+        steps.fillRegistrationForm(humanToTest);
+        steps.clickButtonByText("Submit");
     }
 
     @Test
     @DisplayName("Удаление ряда")
     public void deleteRowTest() {
-
         steps.checkDeleteRow(humanToTest);
     }
 

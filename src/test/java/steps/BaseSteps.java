@@ -1,5 +1,6 @@
 package steps;
 
+import com.codeborne.selenide.SelenideElement;
 import common.enums.Chapter;
 import common.enums.SubChapter;
 import io.qameta.allure.Step;
@@ -43,8 +44,9 @@ public class BaseSteps {
 
     @Step("В поле вводе с placeholder='{0}' ввести значение '{1}'")
     public void inputValueByPlaceholder(String placeholder, String value) {
-        $x(String.format("//input[@placeholder='%s']", placeholder)).should(visible, Duration.ofSeconds(4000)).clear();
-        $x(String.format("//input[@placeholder='%s']", placeholder)).should(visible, Duration.ofSeconds(4000)).sendKeys(value);
+        SelenideElement e = $x(String.format("//input[@placeholder='%s']", placeholder)).should(visible, Duration.ofSeconds(4000));
+        e.clear();
+        e.sendKeys(value);
     }
 
 }

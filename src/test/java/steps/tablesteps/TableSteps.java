@@ -28,6 +28,7 @@ public class TableSteps extends BaseSteps {
 
     @Step("Проверить отображение окна регистрации")
     public void checkRegistrationFormFields() {
+        //TODO:getElementByPlaceholder
         webTablesPage.registrationFormFields.forEach(field->assertTrue(field.isDisplayed()));
         assertTrue(webTablesPage.registrationFormCLose.isDisplayed());
         assertTrue(webTablesPage.registrationFormSubmit.isDisplayed());
@@ -61,7 +62,6 @@ public class TableSteps extends BaseSteps {
     @Step("Проверить, что в таблице была удалена запись")
     public void checkRowIsNotDisplayed(Human human){
         assertFalse(webTablesPage.getRowByName(human.firstName(), human.lastName()).isDisplayed());
-        //TODO:дописать проверку отсутствия записи (достаточно по 2 полям) - Done
     }
 
     @Step("Заполняем поля регистрации полями объекта {0}")
