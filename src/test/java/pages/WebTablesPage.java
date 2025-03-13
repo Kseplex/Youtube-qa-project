@@ -15,7 +15,7 @@ public class WebTablesPage {
 
     public final SelenideElement registrationFormSubmit = $x("//body//div[@class='modal-content']//button[@id='submit']");
 
-    public final ElementsCollection registrationFormFields = $$x("//body//div[@class='modal-content']//input");
+    public final ElementsCollection columns = $$x("//div[@class='rt-tr']/div");
 
     public SelenideElement getDeleteButtonByName(String name, String surname) {
         return getRowByName(name, surname).$x(".//div[@class='action-buttons']/span[contains(@id,'delete')]");
@@ -46,5 +46,7 @@ public class WebTablesPage {
                 .department(getCellInRow(row, 5).text());
     }
 
-
+    public SelenideElement getElementByPlaceholder(String placeholder) {
+        return $x(String.format("//body//div[@class='modal-content']//input[@placeholder='%s']", placeholder));
+    }
 }

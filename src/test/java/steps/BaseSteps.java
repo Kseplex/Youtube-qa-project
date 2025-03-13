@@ -16,9 +16,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class BaseSteps {
 
-    protected final NavigationMenu navigationMenu = new NavigationMenu();
-    protected final SelectMenuPage selectMenuPage = new SelectMenuPage();
-    protected final WebTablesPage webTablesPage = new WebTablesPage();
+    public final NavigationMenu navigationMenu = new NavigationMenu();
+    public final SelectMenuPage selectMenuPage = new SelectMenuPage();
+    public final WebTablesPage webTablesPage = new WebTablesPage();
 
     public void goToTab(String tabName) {
         navigationMenu.getTabByText(tabName).click();
@@ -48,5 +48,4 @@ public class BaseSteps {
         e.clear();
         e.sendKeys(value);
     }
-
 }

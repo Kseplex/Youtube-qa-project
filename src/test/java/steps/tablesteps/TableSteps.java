@@ -1,14 +1,16 @@
 package steps.tablesteps;
 
+import com.codeborne.selenide.SelenideElement;
 import common.enums.Chapter;
 import common.enums.SubChapter;
 import io.qameta.allure.Step;
 import steps.BaseSteps;
 import common.model.Human;
 
+import java.util.List;
+
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class TableSteps extends BaseSteps {
 
@@ -21,18 +23,19 @@ public class TableSteps extends BaseSteps {
     }
 
     @Step("Нажать кнопку '{Add}', проверить, что открылось окно")
-    public void checkRegistrationForm() {
+    public void checkRegistrationForm(List<String> placeholders) {
         clickButtonByText("Add");
-        checkRegistrationFormFields();
+        checkRegistrationFormFields(placeholders);
     }
 
     @Step("Проверить отображение окна регистрации")
-    public void checkRegistrationFormFields() {
-        //TODO:getElementByPlaceholder
-        webTablesPage.registrationFormFields.forEach(field->assertTrue(field.isDisplayed()));
-        assertTrue(webTablesPage.registrationFormCLose.isDisplayed());
-        assertTrue(webTablesPage.registrationFormSubmit.isDisplayed());
-        //TODO: проверить отображение всех полей ввода, кнопки submit и крестика для закрытия - Done
+    public void checkRegistrationFormFields(List<String> placeholders) {
+        //TODO:getElementByPlaceholder - Done
+        assertAll(
+                () -> placeholders.forEach(placeholder->assertTrue(webTablesPage.getElementByPlaceholder(placeholder).isDisplayed())),
+                () -> assertTrue(webTablesPage.registrationFormCLose.isDisplayed()),
+                () -> assertTrue(webTablesPage.registrationFormSubmit.isDisplayed())
+        );
     }
 
     @Step("Нажать кнопку удаления в правой части ряда, проверить, что в таблице была удалена запись")
@@ -42,9 +45,9 @@ public class TableSteps extends BaseSteps {
     }
 
     @Step("Нажать кнопку редактирования в правой части ряда, проверить, что открылось окно")
-    public void checkEditButton() {
-        webTablesPage.getEditButtonByName("Cierra", "Vega").click();
-        checkRegistrationFormFields();
+    public void checkEditButton(Human human, List<String> placeholders) {
+        webTablesPage.getEditButtonByName(human.firstName(), human.lastName()).click();
+        checkRegistrationFormFields(placeholders);
     }
 
     @Step("Заполнить поля другими значениями, нажать Submit, проверить, что в таблице запись поменялась")
@@ -74,4 +77,8 @@ public class TableSteps extends BaseSteps {
         inputValueByPlaceholder("Department", human.department());
     }
 
+    @Step("Нажать на наименование столбца таблицы, проверить, что данные в таблице отсортированы")
+    public void checkColumnsSortingButtons() {
+        webTablesPage.columns
+    }
 }

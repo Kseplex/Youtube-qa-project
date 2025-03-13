@@ -7,7 +7,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import steps.dropdownsteps.DropdownSteps;
 
-
 import java.util.List;
 
 public class Task2Test extends BaseSelenideTest {
