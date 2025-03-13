@@ -8,6 +8,7 @@ import common.model.Human;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -32,7 +33,6 @@ public class TableSteps extends BaseSteps {
 
     @Step("Проверить отображение окна регистрации")
     public void checkRegistrationFormFields(List<String> placeholders) {
-        //TODO:getElementByPlaceholder - Done
         assertAll(
                 () -> placeholders.forEach(placeholder->assertTrue(webTablesPage.getElementByPlaceholder(placeholder).isDisplayed())),
                 () -> assertTrue(webTablesPage.registrationFormCLose.isDisplayed()),
@@ -79,19 +79,33 @@ public class TableSteps extends BaseSteps {
         inputValueByPlaceholder("Department", human.department());
     }
 
-    @Step("Нажать на наименование столбца таблицы, проверить, что данные в таблице отсортированы")
-    public void checkColumnsSortingButtons() {
-        webTablesPage.columnHeaders.forEach(column-> {
-                column.click();
-                assertThat(webTablesPage.getColumnByIndex(
-                        webTablesPage.columnHeaders.texts().indexOf(column.text()))
-                        .texts()).isSorted();
-                column.click();
-                assertThat(webTablesPage.getColumnByIndex(
-                        webTablesPage.columnHeaders.texts().indexOf(column.text()))
-                        .texts()).isSortedAccordingTo(Collections.reverseOrder());
-
-        });
-
+    /*@Step("Нажать на наименование столбца таблицы, проверить, что данные в таблице отсортированы")
+    public void checkColumnsSortingButtons(Map<String, Class<T> class> headersTypes) {
+        for(Map.Entry<String, Object> headerType: headersTypes.entrySet()){
+           String header = headerType.getKey();
+           //клик по хедеру по тексту
+           assertThat(parseByHeaderType(webTablesPage.getColumnByIndex(
+                           webTablesPage.columnHeaders.texts().indexOf(header))
+                   .texts(), headerType.getValue())).isSorted();
+            //клик по хедеру по тексту
+            assertThat(parseByHeaderType(webTablesPage.getColumnByIndex(
+                            webTablesPage.columnHeaders.texts().indexOf(header))
+                    .texts(), headerType.getValue())).isSortedAccordingTo(Collections.reverseOrder());
+        }
     }
+
+    public List<T> parseByHeaderType(List<String> list, Class<T> type){
+        switch (type){
+            case Integer.class:{
+                return list.stream().map(Integer::parseInt).toList();
+                break;
+            }
+            case String.class:{
+                return list;
+                break;
+            }
+        }
+    }
+*/
+
 }

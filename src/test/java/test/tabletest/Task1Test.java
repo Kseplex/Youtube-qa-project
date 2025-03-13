@@ -2,6 +2,7 @@ package test.tabletest;
 
 import common.enums.Chapter;
 import common.enums.ElementsSubchapter;
+import common.model.Human;
 import core.BaseSelenideTest;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
@@ -12,8 +13,11 @@ public class Task1Test extends BaseSelenideTest {
 
     private final TableSteps steps = new TableSteps();
 
+    private Human humanToAdd;
+
     @AfterEach
     public void closeEach() {
+        humanToAdd = faker.generateHuman();
         steps.webTablesPage.getDeleteButtonByName(humanToAdd.firstName(), humanToAdd.lastName()).click();
     }
 

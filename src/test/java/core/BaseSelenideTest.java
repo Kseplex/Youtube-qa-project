@@ -2,6 +2,7 @@ package core;
 
 import com.codeborne.selenide.Selenide;
 import common.model.Human;
+import common.util.DataGenerator;
 import core.config.WebDriverConfig;
 import core.config.WebDriverProviderSelenide;
 import org.aeonbits.owner.ConfigFactory;
@@ -17,21 +18,9 @@ import java.util.List;
 
 public class BaseSelenideTest {
 
+    protected final DataGenerator faker = new DataGenerator();
+
     public static WebDriverConfig config = ConfigFactory.create(WebDriverConfig.class, System.getProperties());
-    public final Human humanToAdd = new Human()
-            .age(24)
-            .salary(300000)
-            .department("Nanosecs")
-            .email("alex@example.com")
-            .firstName("Alexander")
-            .lastName("Zhidyaev");
-    public final Human humanToEdit = new Human()
-            .age(28)
-            .salary(0)
-            .department("GMs")
-            .email("valentin@example.com")
-            .firstName("Valentin")
-            .lastName("Dyagilev");
     public final List<String> placeholders = List.of("First Name", "Last Name", "name@example.com", "Age", "Salary", "Department");
 
     @BeforeAll
