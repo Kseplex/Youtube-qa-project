@@ -15,7 +15,7 @@ public class WebTablesPage {
 
     public final SelenideElement registrationFormSubmit = $x("//body//div[@class='modal-content']//button[@id='submit']");
 
-    public final ElementsCollection columns = $$x("//div[@class='rt-tr']/div");
+    public final ElementsCollection columnHeaders = $$x("//div[@class='rt-table']//div[@role='row']//div[@role='columnheader']/div[1]");
 
     public SelenideElement getDeleteButtonByName(String name, String surname) {
         return getRowByName(name, surname).$x(".//div[@class='action-buttons']/span[contains(@id,'delete')]");
@@ -48,5 +48,10 @@ public class WebTablesPage {
 
     public SelenideElement getElementByPlaceholder(String placeholder) {
         return $x(String.format("//body//div[@class='modal-content']//input[@placeholder='%s']", placeholder));
+    }
+
+    public final ElementsCollection getColumnByIndex(int index) {
+        return $$x(String.format("//div[@class='rt-table']//div[@role='rowgroup']//div[@role='gridcell' " +
+                "and text()][%d]", index + 1));
     }
 }

@@ -1,15 +1,17 @@
 package steps.tablesteps;
 
-import com.codeborne.selenide.SelenideElement;
 import common.enums.Chapter;
 import common.enums.SubChapter;
 import io.qameta.allure.Step;
 import steps.BaseSteps;
 import common.model.Human;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
+import java.util.concurrent.atomic.AtomicInteger;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class TableSteps extends BaseSteps {
@@ -79,6 +81,17 @@ public class TableSteps extends BaseSteps {
 
     @Step("Нажать на наименование столбца таблицы, проверить, что данные в таблице отсортированы")
     public void checkColumnsSortingButtons() {
-        webTablesPage.columns
+        webTablesPage.columnHeaders.forEach(column-> {
+                column.click();
+                assertThat(webTablesPage.getColumnByIndex(
+                        webTablesPage.columnHeaders.texts().indexOf(column.text()))
+                        .texts()).isSorted();
+                column.click();
+                assertThat(webTablesPage.getColumnByIndex(
+                        webTablesPage.columnHeaders.texts().indexOf(column.text()))
+                        .texts()).isSortedAccordingTo(Collections.reverseOrder());
+
+        });
+
     }
 }
