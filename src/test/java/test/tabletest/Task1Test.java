@@ -9,10 +9,12 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import steps.tablesteps.TableSteps;
 
+import java.util.List;
+
 public class Task1Test extends BaseSelenideTest {
 
     private final TableSteps steps = new TableSteps();
-
+    private final List<String> placeholders = List.of("First Name", "Last Name", "name@example.com", "Age", "Salary", "Department");
     private Human humanToAdd;
 
     @AfterEach

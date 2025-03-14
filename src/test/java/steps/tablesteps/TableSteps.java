@@ -6,11 +6,7 @@ import io.qameta.allure.Step;
 import steps.BaseSteps;
 import common.model.Human;
 
-import java.util.Collections;
 import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.concurrent.atomic.AtomicInteger;
 
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.*;

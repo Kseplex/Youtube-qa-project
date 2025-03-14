@@ -13,7 +13,6 @@ import steps.tablesteps.TableSteps;
 public class Task2Test extends BaseSelenideTest {
 
     private final TableSteps steps = new TableSteps();
-
     private Human humanToAdd;
 
     @BeforeEach

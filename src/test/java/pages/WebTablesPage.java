@@ -62,8 +62,4 @@ public class WebTablesPage {
     //TODO:хардкодить вот так ->
     public List<Integer> salaryColumn = $$x("").texts().stream().map(Integer::parseInt).toList();
 
-
-
-
-
 }
