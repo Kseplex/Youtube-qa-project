@@ -15,11 +15,10 @@ public class Task1Test extends BaseSelenideTest {
 
     private final TableSteps steps = new TableSteps();
     private final List<String> placeholders = List.of("First Name", "Last Name", "name@example.com", "Age", "Salary", "Department");
-    private Human humanToAdd;
+    private Human humanToAdd = faker.generateHuman();
 
     @AfterEach
     public void closeEach() {
-        humanToAdd = faker.generateHuman();
         steps.webTablesPage.getDeleteButtonByName(humanToAdd.firstName(), humanToAdd.lastName()).click();
     }
 

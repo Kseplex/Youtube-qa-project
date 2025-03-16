@@ -6,8 +6,11 @@ import io.qameta.allure.Step;
 import steps.BaseSteps;
 import common.model.Human;
 
+import java.time.Duration;
+import java.util.Comparator;
 import java.util.List;
 
+import static com.codeborne.selenide.Condition.visible;
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -18,7 +21,7 @@ public class TableSteps extends BaseSteps {
         goToTab(chapter.getValue());
         goToMenuElement(chapter, subChapter);
 
-        assertTrue(webTablesPage.table.isDisplayed());
+        webTablesPage.table.should(visible, Duration.ofSeconds(4000));
     }
 
     @Step("Нажать кнопку '{Add}', проверить, что открылось окно")
@@ -30,9 +33,9 @@ public class TableSteps extends BaseSteps {
     @Step("Проверить отображение окна регистрации")
     public void checkRegistrationFormFields(List<String> placeholders) {
         assertAll(
-                () -> placeholders.forEach(placeholder->assertTrue(webTablesPage.getElementByPlaceholder(placeholder).isDisplayed())),
-                () -> assertTrue(webTablesPage.registrationFormCLose.isDisplayed()),
-                () -> assertTrue(webTablesPage.registrationFormSubmit.isDisplayed())
+                () -> placeholders.forEach(placeholder->webTablesPage.getElementByPlaceholder(placeholder).should(visible, Duration.ofSeconds(4000))),
+                () -> webTablesPage.registrationFormCLose.should(visible, Duration.ofSeconds(4000)),
+                () -> webTablesPage.registrationFormSubmit.should(visible, Duration.ofSeconds(4000))
         );
     }
 
@@ -75,33 +78,38 @@ public class TableSteps extends BaseSteps {
         inputValueByPlaceholder("Department", human.department());
     }
 
-    /*@Step("Нажать на наименование столбца таблицы, проверить, что данные в таблице отсортированы")
-    public void checkColumnsSortingButtons(Map<String, Class<T> class> headersTypes) {
-        for(Map.Entry<String, Object> headerType: headersTypes.entrySet()){
-           String header = headerType.getKey();
-           //клик по хедеру по тексту
-           assertThat(parseByHeaderType(webTablesPage.getColumnByIndex(
-                           webTablesPage.columnHeaders.texts().indexOf(header))
-                   .texts(), headerType.getValue())).isSorted();
-            //клик по хедеру по тексту
-            assertThat(parseByHeaderType(webTablesPage.getColumnByIndex(
-                            webTablesPage.columnHeaders.texts().indexOf(header))
-                    .texts(), headerType.getValue())).isSortedAccordingTo(Collections.reverseOrder());
+    @Step("Нажать на наименование столбца таблицы, проверить, что данные в таблице отсортированы")
+    public void checkColumnsSortingButtons() {
+        webTablesPage.columnHeaders.forEach(header->{
+            header.click();
+            checkSortingAscendingOrder(header.getText());
+            header.click();
+            checkSortingDescendingOrder(header.getText());
+        });
+    }
+
+    @Step("Проверяем сортировку столбцов в порядке возрастания, в зависимости от типа данных")
+    public void checkSortingAscendingOrder(String name) {
+        switch (name) {
+            case "Age", "Salary" -> assertThat(webTablesPage.getColumnByIndex(
+                            webTablesPage.columnHeaders.texts().indexOf(name))
+                    .texts().stream().map(Integer::parseInt).toList()).isSorted();
+            default -> assertThat(webTablesPage.getColumnByIndex(
+                            webTablesPage.columnHeaders.texts().indexOf(name))
+                    .texts()).isSorted();
         }
     }
 
-    public List<T> parseByHeaderType(List<String> list, Class<T> type){
-        switch (type){
-            case Integer.class:{
-                return list.stream().map(Integer::parseInt).toList();
-                break;
-            }
-            case String.class:{
-                return list;
-                break;
-            }
+    @Step("Проверяем сортировку столбцов в порядке убывания, в зависимости от типа данных")
+    public void checkSortingDescendingOrder(String name) {
+        switch (name) {
+            case "Age", "Salary" -> assertThat(webTablesPage.getColumnByIndex(
+                            webTablesPage.columnHeaders.texts().indexOf(name))
+                    .texts().stream().map(Integer::parseInt).toList()).isSortedAccordingTo(Comparator.reverseOrder());
+            default -> assertThat(webTablesPage.getColumnByIndex(
+                            webTablesPage.columnHeaders.texts().indexOf(name))
+                    .texts()).isSortedAccordingTo(Comparator.reverseOrder());
         }
     }
-*/
 
 }

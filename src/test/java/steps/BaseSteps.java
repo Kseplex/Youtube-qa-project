@@ -44,8 +44,8 @@ public class BaseSteps {
 
     @Step("В поле вводе с placeholder='{0}' ввести значение '{1}'")
     public void inputValueByPlaceholder(String placeholder, String value) {
-        SelenideElement e = $x(String.format("//input[@placeholder='%s']", placeholder)).should(visible, Duration.ofSeconds(4000));
-        e.clear();
-        e.sendKeys(value);
+        SelenideElement element = $x(String.format("//input[@placeholder='%s']", placeholder)).should(visible, Duration.ofSeconds(4000));
+        element.clear();
+        element.sendKeys(value);
     }
 }

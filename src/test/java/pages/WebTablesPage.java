@@ -4,8 +4,6 @@ import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import common.model.Human;
 
-import java.util.List;
-
 import static com.codeborne.selenide.Selenide.$$x;
 import static com.codeborne.selenide.Selenide.$x;
 
@@ -56,10 +54,4 @@ public class WebTablesPage {
         return $$x(String.format("//div[@class='rt-table']//div[@role='rowgroup']//div[@role='gridcell' " +
                 "and text()][%d]", index + 1));
     }
-
-    public List<Integer> ageColumn = $$x("").texts().stream().map(Integer::parseInt).toList();
-
-    //TODO:хардкодить вот так ->
-    public List<Integer> salaryColumn = $$x("").texts().stream().map(Integer::parseInt).toList();
-
 }
