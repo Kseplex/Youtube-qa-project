@@ -8,7 +8,7 @@ public class CalendarPage {
 
     public final SelenideElement dateSelector = $x("//div[@id='datePickerContainer']//input[@id='datePickerMonthYearInput']");
 
-//    public final SelenideElement dateAndTimeSelector = $x("//div[@id='datePickerContainer']//input[@id='dateAndTimePickerInput']");
+    public final SelenideElement dateAndTimeSelector = $x("//div[@id='datePickerContainer']//input[@id='dateAndTimePickerInput']");
 
     public final SelenideElement monthSelector = $x("//div[@class='react-datepicker']//select[contains(@class,'month')]");
 
