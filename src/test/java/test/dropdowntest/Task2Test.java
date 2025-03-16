@@ -11,18 +11,18 @@ import java.util.List;
 
 public class Task2Test extends BaseSelenideTest {
 
-    private final DropdownSteps task2Steps = new DropdownSteps();
+    private final DropdownSteps steps = new DropdownSteps();
 
     @Test
     @DisplayName("Выпадающий список с множеством значений")
     public void multipleSelectTest() {
         final List<String> expectedSelectOptions = List.of("Green", "Blue", "Black", "Red");
 
-        task2Steps.checkHeader(Chapter.WIDGETS, WidgetsSubChapter.SELECT_MENU);
-        task2Steps.checkDropdownMenu(expectedSelectOptions);
-        task2Steps.checkSelectedValues(List.of("Blue", "Green"));
-        task2Steps.checkCleaning();
-        task2Steps.checkSelectAll();
+        steps.checkHeader(Chapter.WIDGETS, WidgetsSubChapter.SELECT_MENU);
+        steps.checkDropdownMenu(expectedSelectOptions);
+        steps.checkSelectedValues(List.of("Blue", "Green"));
+        steps.checkCleaning();
+        steps.checkSelectAll();
     }
 
 }

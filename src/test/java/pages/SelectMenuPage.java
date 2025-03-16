@@ -8,8 +8,6 @@ import static com.codeborne.selenide.Selenide.$x;
 
 public class SelectMenuPage {
 
-    public final SelenideElement headerSelectMenu = $x(
-            "//div[@class='main-header'][text()='Select Menu']");
     public final SelenideElement singleSelectContainer = $x(
             "//div[@class='select-menu-container']//div[@id='withOptGroup']");
     public final SelenideElement selectedSingleValue = $x(

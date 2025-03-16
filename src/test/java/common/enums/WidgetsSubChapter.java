@@ -7,6 +7,7 @@ import lombok.Getter;
 @AllArgsConstructor
 public enum WidgetsSubChapter implements SubChapter{
 
+    DATE_PICKER("Date Picker"),
     SELECT_MENU("Select Menu");
 
     private final String value;

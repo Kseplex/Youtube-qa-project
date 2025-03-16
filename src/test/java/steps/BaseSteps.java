@@ -4,6 +4,7 @@ import com.codeborne.selenide.SelenideElement;
 import common.enums.Chapter;
 import common.enums.SubChapter;
 import io.qameta.allure.Step;
+import pages.CalendarPage;
 import pages.NavigationMenu;
 import pages.SelectMenuPage;
 import pages.WebTablesPage;
@@ -19,6 +20,7 @@ public class BaseSteps {
     public final NavigationMenu navigationMenu = new NavigationMenu();
     public final SelectMenuPage selectMenuPage = new SelectMenuPage();
     public final WebTablesPage webTablesPage = new WebTablesPage();
+    public final CalendarPage calendarPage = new CalendarPage();
 
     public void goToTab(String tabName) {
         navigationMenu.getTabByText(tabName).click();

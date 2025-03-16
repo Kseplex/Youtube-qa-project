@@ -13,6 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class DropdownSteps extends BaseSteps {
+
     @Step("Нажать на селектор 'select value', проверить, что отобразился выпадающий список со значениями '{list}'")
     public void checkDropdownMenu (List<String> list) {
         selectMenuPage.singleSelectContainer.click();

@@ -15,7 +15,6 @@ public class Task4Test extends BaseSelenideTest {
     @DisplayName("Сортировка значений столбцов")
     public void sortColumnsTest() {
         steps.checkTable(Chapter.ELEMENTS, ElementsSubchapter.WEB_TABLES);
-        //TODO: сделай метод через хардкод в webTablesPage - Done
         steps.checkColumnsSortingButtons();
     }
 }
