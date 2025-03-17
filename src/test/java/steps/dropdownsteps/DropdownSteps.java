@@ -21,6 +21,13 @@ public class DropdownSteps extends BaseSteps {
                 .isEqualTo(list);
     }
 
+    @Step("Нажать на селектор 'Multiselect drop down', проверить, что отобразился выпадающий список со значениями '{list}'")
+    public void checkMultiDropdownMenu (List<String> list) {
+        selectMenuPage.multiSelectContainer.click();
+        assertThat(selectMenuPage.multiValueCollection.texts())
+                .isEqualTo(list);
+    }
+
     @Step("Выбрать в выпадающем списке '{value}', проверить, что после нажатия в селекторе будет установлено \n" +
             "это значение")
     public void checkSelectedValue(String value) {

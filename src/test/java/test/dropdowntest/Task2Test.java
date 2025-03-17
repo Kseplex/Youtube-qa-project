@@ -19,7 +19,7 @@ public class Task2Test extends BaseSelenideTest {
         final List<String> expectedSelectOptions = List.of("Green", "Blue", "Black", "Red");
 
         steps.checkHeader(Chapter.WIDGETS, WidgetsSubChapter.SELECT_MENU);
-        steps.checkDropdownMenu(expectedSelectOptions);
+        steps.checkMultiDropdownMenu(expectedSelectOptions);
         steps.checkSelectedValues(List.of("Blue", "Green"));
         steps.checkCleaning();
         steps.checkSelectAll();
