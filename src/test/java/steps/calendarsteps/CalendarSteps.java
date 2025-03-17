@@ -39,12 +39,11 @@ public class CalendarSteps extends BaseSteps {
             " проверить, что отобразятся верные дата и время")
     public void checkEarlierDateAndTime() {
         LocalDateTime expectedDateAndTime = LocalDateTime.of(
-                LocalDate.now().minusYears(5).minusMonths(5),
+                LocalDate.now().minusYears(14).minusMonths(5),
                 LocalTime.parse("11:30"));
         String monthName = expectedDateAndTime.getMonth().getDisplayName(TextStyle.FULL, Locale.ENGLISH);
 
         calendarPage.dateAndTimeSelector.click();
-
         calendarPage.dateTimeYearSelector.click();
         calendarPage.getYearInDateTimeSelector(Integer.toString(expectedDateAndTime.getYear())).click();
 

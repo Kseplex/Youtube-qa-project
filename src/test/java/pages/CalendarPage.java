@@ -21,32 +21,33 @@ public class CalendarPage {
 
     public final ElementsCollection dateTimeYearsVisible = dateTimeYearSelector.$$x(".//div[contains(@class,'option')][text()]");
 
-    public SelenideElement getMonthInDateSelector(int value) {
-        return dateMonthSelector.$x(String.format(".//option[%d]", value));
+    public SelenideElement getMonthInDateSelector(int month) {
+        return dateMonthSelector.$x(String.format(".//option[%d]", month));
     }
 
-    public SelenideElement getYearInDateSelector(int value) {
-        return dateYearSelector.$x(String.format(".//option[@value='%d']", value));
+    public SelenideElement getYearInDateSelector(int year) {
+        return dateYearSelector.$x(String.format(".//option[@value='%d']", year));
     }
 
-    public SelenideElement getDayInSelectorByMonth(String month, int value) {
-        return $x(String.format("//div[@role='listbox']//div[contains(@aria-label,'%s')][text()=%d]", month, value));
+    public SelenideElement getDayInSelectorByMonth(String month, int day) {
+        return $x(String.format("//div[@role='listbox']//div[contains(@aria-label,'%s')][text()=%d]", month, day));
     }
 
-    public SelenideElement getYearInDateTimeSelector(String target) {
-        while (true) {
-            if (dateTimeYearsVisible.texts().contains(target)) {
-                return dateTimeYearSelector.$x(String.format(".//div[contains(@class,'option')][text()='%s']", target));
-            } else if (Integer.parseInt(dateTimeYearSelector.$x(".//div[contains(@class,'option')][12]").text()) > Integer.parseInt(target)) {
-                dateTimeYearSelector.$x(".//div[contains(@class,'option')][13]").click();
-            } else {
-                dateTimeYearSelector.$x(".//div[contains(@class,'option')][1]").click();
-            }
+    public SelenideElement getYearInDateTimeSelector(String year) {
+        SelenideElement direction = null;
+        if (Integer.parseInt(dateTimeYearsVisible.texts().get(0)) < Integer.parseInt(year)) {
+            direction = dateTimeYearSelector.$x(".//div[contains(@class,'option')][1]");
+        } else if (Integer.parseInt(dateTimeYearsVisible.texts().get(10)) > Integer.parseInt(year)) {
+            direction = dateTimeYearSelector.$x(".//div[contains(@class,'option')][13]");
         }
+        while (direction != null && !dateTimeYearsVisible.texts().contains(year)) {
+            direction.click();
+        }
+        return dateTimeYearSelector.$x(String.format(".//div[contains(@class,'option')][text()='%s']", year));
     }
 
-    public SelenideElement getMonthInDateTimeSelector(String name) {
-        return dateTimeMonthSelector.$x(String.format(".//div[text()='%s']", name));
+    public SelenideElement getMonthInDateTimeSelector(String month) {
+        return dateTimeMonthSelector.$x(String.format(".//div[text()='%s']", month));
     }
 
     public SelenideElement getTimeInDateTimeSelector(String time) {
