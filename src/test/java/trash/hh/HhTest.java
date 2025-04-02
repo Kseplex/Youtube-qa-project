@@ -1,6 +1,6 @@
 package trash.hh;
 
-import core.BaseSelenideTest;
+import uitests.core.BaseSelenideTest;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 
 import org.junit.jupiter.api.Assertions;

@@ -1,7 +1,7 @@
 package trash.appleInsider;
 
 
-import core.BaseSelenideTest;
+import uitests.core.BaseSelenideTest;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

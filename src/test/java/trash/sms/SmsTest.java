@@ -2,7 +2,7 @@ package trash.sms;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
-import core.BaseSelenideTest;
+import uitests.core.BaseSelenideTest;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -18,7 +18,7 @@ public class SmsTest extends BaseSelenideTest {
     @BeforeEach
     public void setUpExtension(){
         ChromeOptions chromeOptions = new ChromeOptions();
-        chromeOptions.addExtensions(new File("/Users/o.pendrak/IdeaProjects/Youtube-qa-project/src/test/resources/modheader.crx"));
+        chromeOptions.addExtensions(new File("/Users/o.pendrak/IdeaProjects/Youtube-qa-project/src/uitests.test/resources/modheader.crx"));
         Configuration.browserCapabilities = new DesiredCapabilities();
         Configuration.browserCapabilities.setCapability(ChromeOptions.CAPABILITY,chromeOptions);
         addCookie();
