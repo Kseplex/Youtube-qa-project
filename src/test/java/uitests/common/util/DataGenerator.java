@@ -1,5 +1,6 @@
 package uitests.common.util;
 
+import apitests.model.request.signup.User;
 import com.github.javafaker.Faker;
 import uitests.common.model.Human;
 
@@ -15,5 +16,9 @@ public class DataGenerator {
                 .email(faker.lorem().characters(5) + "@example.com")
                 .firstName(faker.name().firstName())
                 .lastName(faker.name().lastName());
+    }
+
+    public User generateUser(){
+        return new User().login(faker.name().username()).pass("12345");
     }
 }
