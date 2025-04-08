@@ -1,7 +1,7 @@
 package uitests.core;
 
 import com.codeborne.selenide.Selenide;
-import uitests.common.util.DataGenerator;
+import uitests.pendrak.common.util.DataGenerator;
 import uitests.core.config.WebDriverConfig;
 import uitests.core.config.WebDriverProviderSelenide;
 import org.aeonbits.owner.ConfigFactory;
