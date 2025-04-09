@@ -12,6 +12,7 @@ public class Task1Test extends BaseSelenideTest {
     @Test
     @DisplayName("Проверка фильтра в поиске вакансий")
     public void filterTest() {
-        steps.vacancyListCheck();
+        steps.vacanciesListCheck();
+        steps.vacanciesFilterCheck();
     }
 }

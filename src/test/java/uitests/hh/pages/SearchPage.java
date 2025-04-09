@@ -11,4 +11,10 @@ public class SearchPage {
     public final SelenideElement inputField = $x("//div[contains(@class,'supernova-dashboard-content')]//input[contains(@id,'search')]");
 
     public final SelenideElement vacancyList = $x("//main[@class='vacancy-serp-content']");
+
+    public final SelenideElement dialogForm = $x("//div[@role='dialog']");
+
+    public final SelenideElement dialogFormCross = dialogForm.$x(".//button");
+
+
 }
