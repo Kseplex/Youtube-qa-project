@@ -6,9 +6,7 @@ import apitests.model.response.signup.Info;
 import org.junit.jupiter.api.Test;
 import uitests.pendrak.common.util.DataGenerator;
 
-import static io.restassured.RestAssured.given;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class SwaggerTest {
 
