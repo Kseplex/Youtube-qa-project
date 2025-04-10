@@ -1,4 +1,4 @@
-package uitests.hh.steps.filtersteps;
+package uitests.hh.steps.searchsteps;
 
 import io.qameta.allure.Step;
 import uitests.hh.pages.SearchPage;
@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
 import static com.codeborne.selenide.Condition.visible;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class FilterSteps {
+public class SearchSteps {
 
     private final SearchPage searchPage = new SearchPage();
 
@@ -41,14 +41,15 @@ public class FilterSteps {
     public void shownVacanciesSalaryCheck(int salaryToSearch) {
         searchPage.salaryInfo.texts().forEach(text-> {
                     System.out.println(text);
-                    assertTrue(text.contains("₽") ? checkSalaryInRubles(text.replaceAll(" ", ""), salaryToSearch)
-                            : checkSalaryInDollars(text.replaceAll(" ", ""), salaryToSearch));
+                    assertTrue(text.contains("₽")
+                            ? checkSalaryInRubles(text, salaryToSearch)
+                            : checkSalaryInDollars(text, salaryToSearch));
                 }
         );
     }
 
     public boolean checkSalaryInRubles(String text, int salaryToSearch) {
-        Pattern pattern = Pattern.compile("\\d{4}");
+        Pattern pattern = Pattern.compile("\\d{3}\\d{3}");
         System.out.println(text);
 
         Matcher matcher = pattern.matcher(text);
