@@ -28,6 +28,7 @@ public class SearchSteps {
             "с указанным уровнем дохода = true, применить фильтр")
     public void vacanciesFilterCheck(int salaryToSearch) {
         searchPage.filterButton.should(visible, Duration.ofSeconds(6000)).click();
+        //todo: можно сделать в 2 клика через меню справа с выпадающим списком
         searchPage.regionCrosses.forEach(element ->
                 element.scrollIntoView(true).click()
         );
@@ -40,6 +41,7 @@ public class SearchSteps {
     @Step("Проверить, что все отобразившиеся вакансии имеют указанный уровень дохода, доход составляет {0} и более")
     public void shownVacanciesSalaryCheck(int salaryToSearch) {
         searchPage.salaryInfo.texts().forEach(text-> {
+            //todo: убирай sout
                     System.out.println(text);
                     assertTrue(text.contains("₽")
                             ? checkSalaryInRubles(text, salaryToSearch)
@@ -51,7 +53,7 @@ public class SearchSteps {
     public boolean checkSalaryInRubles(String text, int salaryToSearch) {
         Pattern pattern = Pattern.compile("\\d{3}\\d{3}");
         System.out.println(text);
-
+//todo: убирай sout
         Matcher matcher = pattern.matcher(text);
         if (matcher.find()) {
             System.out.println(matcher.group());
@@ -68,4 +70,5 @@ public class SearchSteps {
             return Integer.parseInt(matcher.group(1).replaceAll(" ", "")) >= salaryToSearch / 83;
         return false;
     }
+    //todo: 2 метода можно объединить в 1, используя switch-case
 }

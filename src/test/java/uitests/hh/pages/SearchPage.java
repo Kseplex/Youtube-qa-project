@@ -8,6 +8,8 @@ import static com.codeborne.selenide.Selenide.$x;
 
 public class SearchPage {
 
+
+    //todo: некоторые xpath могут быть попроще, обрати внимание на атрибут data-qa
     public final SelenideElement submitButton = $x(
             "//div[contains(@class,'button')]//span[text()='Найти']");
 
