@@ -8,33 +8,41 @@ import static com.codeborne.selenide.Selenide.$x;
 
 public class SearchPage {
 
+    //todo: некоторые xpath могут быть попроще, обрати внимание на атрибут data-qa - DONE
+    public final SelenideElement submitButton = $x("//button[@data-qa='search-button']");
 
-    //todo: некоторые xpath могут быть попроще, обрати внимание на атрибут data-qa
-    public final SelenideElement submitButton = $x(
-            "//div[contains(@class,'button')]//span[text()='Найти']");
+    public final SelenideElement searchInputField = $x("//input[@data-qa='search-input']");
 
-    public final SelenideElement searchInputField = $x(
-            "//form[contains(@id,'search')]//input[contains(@id,'search')]");
-
-    public final SelenideElement vacanciesList = $x("//main[contains(@class,'vacancy')]");
+    public final SelenideElement vacanciesList = $x("//div[@data-qa='vacancy-serp__results']");
 
     public final SelenideElement dialogForm = $x("//div[@role='dialog']");
 
     public final SelenideElement dialogFormCross = dialogForm.$x(".//div[contains(@class,'actions')]//button");
 
-    public final SelenideElement filterButton = $x("//form[contains(@id,'search')]//a");
+    public final SelenideElement registrationForm = $x("//div[contains(@class,'bloko-modal-container')]");
+
+    public final SelenideElement registrationFormCross = $x("//div[contains(@class,'bloko-modal-container')]" +
+            "//div[contains(@data-qa,'close')]");
+
+    public final SelenideElement filterButton = $x("//a[@data-qa='advanced-search']");
 
     public final SelenideElement salaryInputField = $x(
-            "//div[contains(@class,'container')]//input[contains(@data-qa,'search-salary')]");
+            "//input[@data-qa='advanced-search-salary']");
 
     public final SelenideElement salaryCheckBox = $x(
-            "//span[contains(@class,'checkbox')]//input[contains(@name,'only_with_salary')]");
+            "//input[@data-qa='control-vacancysearch__only-with-compensation']");
 
     public final SelenideElement submitButtonInFilter = $x(
-            "//div[contains(@class,'submit-wrapper')]//div[contains(@class,'button')]//span[text()='Найти']");
+            "//button[@data-qa='advanced-search-submit-button']");
 
-    public final ElementsCollection regionCrosses = $$x(
-            "//div[contains(@class,'container')]//button/following-sibling::*[1][name()='span']");
+    public final SelenideElement regionSearchOpenButton =
+            $x("//button[@data-qa='advanced-search-region-selectFromList']");
+
+    public final SelenideElement regionSearchCheckbox =
+            $x("//input[@data-qa='tree-selector-input tree-selector-input-113']");
+
+    public final SelenideElement regionSearchSubmitButton =
+            $x("//button[@data-qa='composite-selection-tree-selector-modal-submit']");
 
     public final ElementsCollection salaryInfo = $$x(
             "//div[contains(@class,'vacancy-info')]//div[contains(@class,'narrow-container')][2]" +

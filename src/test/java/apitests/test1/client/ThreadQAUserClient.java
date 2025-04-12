@@ -1,10 +1,10 @@
-package apitests.client;
+package apitests.test1.client;
 
-import apitests.model.request.signup.User;
-import apitests.model.response.signup.CreateUserResponse;
+import apitests.test1.model.request.signup.User;
+import apitests.test1.model.response.signup.CreateUserResponse;
 import io.qameta.allure.Step;
 
-import static apitests.Specifications.getThreadQaSpec;
+import static apitests.test1.Specifications.getThreadQaSpec;
 import static io.restassured.RestAssured.given;
 
 public class ThreadQAUserClient {

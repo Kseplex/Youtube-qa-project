@@ -1,8 +1,8 @@
-package apitests;
+package apitests.test1;
 
 
-import apitests.client.ThreadQAUserClient;
-import apitests.model.response.signup.Info;
+import apitests.test1.client.ThreadQAUserClient;
+import apitests.test1.model.response.signup.Info;
 import org.junit.jupiter.api.Test;
 import uitests.pendrak.common.util.DataGenerator;
 

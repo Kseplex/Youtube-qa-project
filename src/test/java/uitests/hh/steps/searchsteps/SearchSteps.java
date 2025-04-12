@@ -21,6 +21,8 @@ public class SearchSteps {
         searchPage.submitButton.click();
         if (searchPage.dialogForm.isDisplayed())
             searchPage.dialogFormCross.click();
+        else if (searchPage.registrationForm.isDisplayed())
+            searchPage.registrationFormCross.click();
         searchPage.vacanciesList.should(visible, Duration.ofSeconds(6000));
     }
 
@@ -28,10 +30,11 @@ public class SearchSteps {
             "с указанным уровнем дохода = true, применить фильтр")
     public void vacanciesFilterCheck(int salaryToSearch) {
         searchPage.filterButton.should(visible, Duration.ofSeconds(6000)).click();
-        //todo: можно сделать в 2 клика через меню справа с выпадающим списком
-        searchPage.regionCrosses.forEach(element ->
-                element.scrollIntoView(true).click()
-        );
+        //todo: можно сделать в 2 клика через меню справа с выпадающим списком - DONE
+        searchPage.regionSearchOpenButton.scrollIntoView(true).click();
+        searchPage.regionSearchCheckbox.should(visible, Duration.ofSeconds(6000)).click();
+        searchPage.regionSearchCheckbox.click();
+        searchPage.regionSearchSubmitButton.click();
         searchPage.salaryInputField.scrollIntoView(true).click();
         searchPage.salaryInputField.sendKeys(Integer.toString(salaryToSearch));
         searchPage.salaryCheckBox.scrollIntoView(true).click();
@@ -41,8 +44,6 @@ public class SearchSteps {
     @Step("Проверить, что все отобразившиеся вакансии имеют указанный уровень дохода, доход составляет {0} и более")
     public void shownVacanciesSalaryCheck(int salaryToSearch) {
         searchPage.salaryInfo.texts().forEach(text-> {
-            //todo: убирай sout
-                    System.out.println(text);
                     assertTrue(text.contains("₽")
                             ? checkSalaryInRubles(text, salaryToSearch)
                             : checkSalaryInDollars(text, salaryToSearch));
@@ -51,7 +52,7 @@ public class SearchSteps {
     }
 
     public boolean checkSalaryInRubles(String text, int salaryToSearch) {
-        Pattern pattern = Pattern.compile("\\d{3}\\d{3}");
+        Pattern pattern = Pattern.compile("(\\d+)(\\d+)");
         System.out.println(text);
 //todo: убирай sout
         Matcher matcher = pattern.matcher(text);

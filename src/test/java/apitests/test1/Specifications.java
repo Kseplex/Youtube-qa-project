@@ -1,4 +1,4 @@
-package apitests;
+package apitests.test1;
 
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.http.ContentType;

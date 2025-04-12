@@ -1,4 +1,4 @@
-package apitests.model.response.signup;
+package apitests.test1.model.response.signup;
 
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
