@@ -3,8 +3,6 @@ package uitests.hh.steps.searchsteps;
 import io.qameta.allure.Step;
 import uitests.hh.pages.SearchPage;
 import java.time.Duration;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import static com.codeborne.selenide.Condition.visible;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -30,8 +28,7 @@ public class SearchSteps {
             "с указанным уровнем дохода = true, применить фильтр")
     public void vacanciesFilterCheck(int salaryToSearch) {
         searchPage.filterButton.should(visible, Duration.ofSeconds(6000)).click();
-        //todo: можно сделать в 2 клика через меню справа с выпадающим списком - DONE
-        searchPage.regionSearchOpenButton.scrollIntoView(true).click();
+        searchPage.regionSearchOpenButton.should(visible, Duration.ofSeconds(6000)).scrollIntoView(true).click();
         searchPage.regionSearchCheckbox.should(visible, Duration.ofSeconds(6000)).click();
         searchPage.regionSearchCheckbox.click();
         searchPage.regionSearchSubmitButton.click();
@@ -43,33 +40,27 @@ public class SearchSteps {
 
     @Step("Проверить, что все отобразившиеся вакансии имеют указанный уровень дохода, доход составляет {0} и более")
     public void shownVacanciesSalaryCheck(int salaryToSearch) {
-        searchPage.salaryInfo.texts().forEach(text-> {
-                    assertTrue(text.contains("₽")
-                            ? checkSalaryInRubles(text, salaryToSearch)
-                            : checkSalaryInDollars(text, salaryToSearch));
-                }
-        );
+        searchPage.salaryInfo.texts().forEach(text ->
+                assertTrue(getSalaryInRub(text) >= salaryToSearch));
+
     }
 
-    public boolean checkSalaryInRubles(String text, int salaryToSearch) {
-        Pattern pattern = Pattern.compile("(\\d+)(\\d+)");
-        System.out.println(text);
-//todo: убирай sout
-        Matcher matcher = pattern.matcher(text);
-        if (matcher.find()) {
-            System.out.println(matcher.group());
-            return Integer.parseInt(matcher.group()) >= salaryToSearch;
+    public double getSalaryInRub(String sal) {
+
+        String salary = sal;
+        if (sal.contains(" – ")) {
+            salary = sal.split(" – ")[0];
         }
-        System.out.println(matcher.group());
-        return false;
-    }
 
-    public boolean checkSalaryInDollars(String text, int salaryToSearch) {
-        Pattern pattern = Pattern.compile("^\\d\\s\\d{3}$");
-        Matcher matcher = pattern.matcher(text);
-        if (matcher.find())
-            return Integer.parseInt(matcher.group(1).replaceAll(" ", "")) >= salaryToSearch / 83;
-        return false;
+        if (sal.contains("руб.")) {
+            String sum = salary.replaceAll("\\D", "");
+            return Double.parseDouble(sum);
+        } else if (sal.contains("EUR")) {
+            String sum = salary.replaceAll("\\D", "");
+            return Double.parseDouble(sum) * 76.56;
+        } else {
+            String sum = salary.replaceAll("\\D", "");
+            return Double.parseDouble(sum) * 72.68;
+        }
     }
-    //todo: 2 метода можно объединить в 1, используя switch-case
 }
