@@ -15,7 +15,7 @@ public class SwaggerTest {
     DataGenerator faker = new DataGenerator();
 
     @Test
-    public void userRegistrationTest(){
+    public void userRegistrationTest() {
         Info expectedInfo = new Info().message("User created").status("success");
         assertThat(threadQAUserClient.signUp(faker.generateUser()).info()).isEqualTo(expectedInfo);
     }
