@@ -1,5 +1,8 @@
 # Project exclude paths
 /.gradle/
+/target/
+/allure-results
+/.allure
 /build/
 /build/classes/java/main/
 /build/classes/java/uitests.test/

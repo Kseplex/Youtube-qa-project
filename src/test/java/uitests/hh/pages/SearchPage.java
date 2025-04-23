@@ -8,7 +8,6 @@ import static com.codeborne.selenide.Selenide.$x;
 
 public class SearchPage {
 
-    //todo: некоторые xpath могут быть попроще, обрати внимание на атрибут data-qa - DONE
     public final SelenideElement submitButton = $x("//button[@data-qa='search-button']");
 
     public final SelenideElement searchInputField = $x("//input[@data-qa='search-input']");
@@ -39,7 +38,7 @@ public class SearchPage {
             $x("//button[@data-qa='advanced-search-region-selectFromList']");
 
     public final SelenideElement regionSearchCheckbox =
-            $x("//input[@data-qa='tree-selector-input tree-selector-input-113']");
+            $x("//div[@data-qa='cell-left-side']//div[text()='Россия']");
 
     public final SelenideElement regionSearchSubmitButton =
             $x("//button[@data-qa='composite-selection-tree-selector-modal-submit']");
