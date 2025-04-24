@@ -1,0 +1,24 @@
+-------------------------------------------------------------------------------
+Test set: trash.appleInsider.AppleTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 18.332 s <<< FAILURE! - in trash.appleInsider.AppleTest
+checkHref  Time elapsed: 15.091 s  <<< FAILURE!
+com.codeborne.selenide.ex.ElementNotFound: 
+Element not found {By.xpath: //input[@type='text']}
+Expected: editable
+Page source: file:/C:/Users/Frontime/IdeaProjects/Youtube-qa-project/build/reports/tests/1741252045263.0.html
+Timeout: 12 s.
+Caused by: NoSuchWindowException: no such window: target window already closed
+	at trash.appleInsider.AppleTest.checkHref(AppleTest.java:18)
+Caused by: org.openqa.selenium.NoSuchWindowException: 
+no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=109.0.5414.168)
+Build info: version: '4.16.1', revision: '9b4c83354e'
+System info: os.name: 'Windows 8.1', os.arch: 'amd64', os.version: '6.3', java.version: '17.0.14'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [50de2fcd0d3277488f719ba8d4b67b1c, findElement {using=xpath, value=//input[@type='text']}]
+Capabilities {acceptInsecureCerts: true, browserName: chrome, browserVersion: 109.0.5414.168, chrome: {chromedriverVersion: 109.0.5414.74 (e7c5703604da..., userDataDir: C:\Users\Frontime\AppData\L...}, goog:chromeOptions: {debuggerAddress: localhost:54618}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:54618/devtoo..., se:cdpVersion: 109.0.5414.168, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: accept, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: 50de2fcd0d3277488f719ba8d4b67b1c
+	at trash.appleInsider.AppleTest.checkHref(AppleTest.java:18)
+

@@ -1,0 +1,1 @@
+{"uuid":"9d17b342-1cb5-45e7-832a-662e22629a88","name":"AppleTest","children":["410f922d-e256-4a34-9cc6-7f58e8221e63"],"befores":[{"name":"setUp","status":"passed","stage":"finished","steps":[],"attachments":[],"parameters":[],"start":1741252024980,"stop":1741252030211}],"afters":[],"start":1741252024975,"stop":1741252045307}

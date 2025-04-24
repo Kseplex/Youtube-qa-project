@@ -1,0 +1,20 @@
+-------------------------------------------------------------------------------
+Test set: trash.api.jsonplaceholder.PlaceHolderTest
+-------------------------------------------------------------------------------
+Tests run: 4, Failures: 0, Errors: 4, Skipped: 0, Time elapsed: 13.768 s <<< FAILURE! - in trash.api.jsonplaceholder.PlaceHolderTest
+test  Time elapsed: 4.319 s  <<< ERROR!
+java.lang.IllegalStateException: Cannot deserialize object because no JSON deserializer found in classpath. Please put Jackson (Databind), Gson, Jackson, or Yasson in the classpath.
+	at trash.api.jsonplaceholder.PlaceHolderTest.test(PlaceHolderTest.java:31)
+
+test2  Time elapsed: 7.069 s  <<< ERROR!
+java.lang.IllegalStateException: Cannot deserialize object because no JSON deserializer found in classpath. Please put Jackson (Databind), Gson, Jackson, or Yasson in the classpath.
+	at trash.api.jsonplaceholder.PlaceHolderTest.test2(PlaceHolderTest.java:52)
+
+test3  Time elapsed: 2.286 s  <<< ERROR!
+java.lang.IllegalStateException: Cannot deserialize object because no JSON deserializer found in classpath. Please put Jackson (Databind), Gson, Jackson, or Yasson in the classpath.
+	at trash.api.jsonplaceholder.PlaceHolderTest.test3(PlaceHolderTest.java:72)
+
+test4  Time elapsed: 0.018 s  <<< ERROR!
+java.lang.IllegalStateException: Cannot deserialize object because no JSON deserializer found in classpath. Please put Jackson (Databind), Gson, Jackson, or Yasson in the classpath.
+	at trash.api.jsonplaceholder.PlaceHolderTest.test4(PlaceHolderTest.java:90)
+

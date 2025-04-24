@@ -1,6 +1,5 @@
 package apitests.test2.request.activities;
 
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.NoArgsConstructor;
