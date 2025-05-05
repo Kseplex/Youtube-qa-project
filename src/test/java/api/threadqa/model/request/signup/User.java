@@ -1,4 +1,4 @@
-package apitests.test1.model.request.signup;
+package api.threadqa.model.request.signup;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;

@@ -1,14 +1,14 @@
-package apitests.test1;
+package apitests;
 
 
-import apitests.test1.client.ThreadQAUserClient;
-import apitests.test1.model.response.signup.Info;
+import api.threadqa.client.ThreadQAUserClient;
+import api.threadqa.model.response.signup.Info;
 import org.junit.jupiter.api.Test;
 import uitests.pendrak.common.util.DataGenerator;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-public class SwaggerTest {
+public class ThreadQATest {
 
     private final ThreadQAUserClient threadQAUserClient = new ThreadQAUserClient();
 

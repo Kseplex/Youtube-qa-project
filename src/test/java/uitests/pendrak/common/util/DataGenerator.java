@@ -1,6 +1,6 @@
 package uitests.pendrak.common.util;
 
-import apitests.test1.model.request.signup.User;
+import api.threadqa.model.request.signup.User;
 import com.github.javafaker.Faker;
 import uitests.pendrak.common.model.Human;
 

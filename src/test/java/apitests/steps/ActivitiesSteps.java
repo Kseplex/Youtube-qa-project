@@ -1,10 +1,9 @@
-package apitests.test2;
+package apitests.steps;
 
-import apitests.test2.request.activities.Activity;
+import api.fakerestapi.model.Activity;
 import io.qameta.allure.Step;
 
 import java.time.ZonedDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;

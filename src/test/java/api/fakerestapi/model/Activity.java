@@ -1,4 +1,4 @@
-package apitests.test2.request.activities;
+package api.fakerestapi.model;
 
 
 import com.fasterxml.jackson.annotation.JsonProperty;

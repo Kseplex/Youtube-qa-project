@@ -1,4 +1,4 @@
-package apitests.test1.model.response.signup;
+package api.threadqa.model.response.signup;
 
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;

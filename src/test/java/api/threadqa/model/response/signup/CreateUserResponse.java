@@ -1,4 +1,4 @@
-package apitests.test1.model.response.signup;
+package api.threadqa.model.response.signup;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
@@ -8,11 +8,12 @@ import lombok.experimental.Accessors;
 @Data
 @NoArgsConstructor
 @Accessors(chain=true, fluent=true)
-public class Info{
+public class CreateUserResponse{
 
-	@JsonProperty("message")
-	private String message;
+	@JsonProperty("register_data")
+	private RegisterData registerData;
 
-	@JsonProperty("status")
-	private String status;
+	@JsonProperty("info")
+	private Info info;
+
 }
