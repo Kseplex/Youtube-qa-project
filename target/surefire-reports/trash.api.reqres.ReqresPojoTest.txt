@@ -1,0 +1,24 @@
+-------------------------------------------------------------------------------
+Test set: trash.api.reqres.ReqresPojoTest
+-------------------------------------------------------------------------------
+Tests run: 6, Failures: 0, Errors: 5, Skipped: 0, Time elapsed: 0.003 s <<< FAILURE! - in trash.api.reqres.ReqresPojoTest
+checkServerAndPcDateTest  Time elapsed: 0 s  <<< ERROR!
+java.lang.IllegalStateException: Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath.
+	at trash.api.reqres.ReqresPojoTest.checkServerAndPcDateTest(ReqresPojoTest.java:152)
+
+checkAvatarContainsIdTest  Time elapsed: 0 s  <<< ERROR!
+java.lang.IllegalStateException: Cannot deserialize object because no JSON deserializer found in classpath. Please put Jackson (Databind), Gson, Jackson, or Yasson in the classpath.
+	at trash.api.reqres.ReqresPojoTest.checkAvatarContainsIdTest(ReqresPojoTest.java:42)
+
+unSuccessUserRegTest  Time elapsed: 0 s  <<< ERROR!
+java.lang.IllegalStateException: Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath.
+	at trash.api.reqres.ReqresPojoTest.unSuccessUserRegTest(ReqresPojoTest.java:98)
+
+successUserRegTest  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.IllegalStateException: Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath.
+	at trash.api.reqres.ReqresPojoTest.successUserRegTest(ReqresPojoTest.java:76)
+
+checkSortedYearsTest  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.IllegalStateException: Cannot deserialize object because no JSON deserializer found in classpath. Please put Jackson (Databind), Gson, Jackson, or Yasson in the classpath.
+	at trash.api.reqres.ReqresPojoTest.checkSortedYearsTest(ReqresPojoTest.java:121)
+

@@ -1,0 +1,12 @@
+-------------------------------------------------------------------------------
+Test set: trash.api.reqres.ReqresNoPojoTest
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 0.002 s <<< FAILURE! - in trash.api.reqres.ReqresNoPojoTest
+successUserRegTestNoPojo  Time elapsed: 0 s  <<< ERROR!
+java.lang.IllegalStateException: Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath.
+	at trash.api.reqres.ReqresNoPojoTest.successUserRegTestNoPojo(ReqresNoPojoTest.java:54)
+
+unsuccessUserRegNoPojo  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.IllegalStateException: Cannot serialize object because no JSON serializer found in classpath. Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath.
+	at trash.api.reqres.ReqresNoPojoTest.unsuccessUserRegNoPojo(ReqresNoPojoTest.java:72)
+
